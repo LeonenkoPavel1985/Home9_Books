@@ -20,7 +20,7 @@ public class Main {
         System.out.println(cb.getBooksById(5).toString());
 
 
-        String bookName =  "Collected Works2";
+        String bookName =  "Collected Works3";
         List<Books> resultsBookName = cb.getBooksByBookName(bookName);
         if (resultsBookName.size() > 0 || resultsBookName !=null) {
             for(Books c : resultsBookName) {

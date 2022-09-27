@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-
 public class ControllerBooks {
 
     public ControllerBooks() {}
@@ -20,7 +19,7 @@ public class ControllerBooks {
         return books;
     }
 
-    public boolean addBooks (Books books) {
+    public boolean addBooks(Books books) {
         Session session = HibernateSessionGet.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         session.persist(books);
@@ -28,7 +27,7 @@ public class ControllerBooks {
         return true;
     }
 
-    public boolean addBooks (String bookName, String authorName, int yearIssue, String bookStyle, int numberPages, String description) {
+    public boolean addBooks(String bookName, String authorName, int yearIssue, String bookStyle, int numberPages, String description) {
         Session session = HibernateSessionGet.getSessionFactory().openSession();
         Transaction tx= session.beginTransaction();
         session.persist(new Books(bookName, authorName, yearIssue, bookStyle, numberPages, description));
@@ -36,7 +35,7 @@ public class ControllerBooks {
         return true;
     }
 
-    public boolean removeBooksById (int id) {
+    public boolean removeBooksById(int id) {
         Session session = HibernateSessionGet.getSessionFactory().openSession();
         Transaction tx= session.beginTransaction();
         boolean test = false;
@@ -49,7 +48,7 @@ public class ControllerBooks {
         return test;
     }
 
-    public boolean updateBooksById (int id, String bookName, String authorName, int yearIssue, String bookStyle, int numberPages, String description) {
+    public boolean updateBooksById(int id, String bookName, String authorName, int yearIssue, String bookStyle, int numberPages, String description) {
         Session session = HibernateSessionGet.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         Books books = session.get(Books.class, id);
@@ -63,7 +62,7 @@ public class ControllerBooks {
         return true;
     }
 
-    public List<Books> getBooksByBookName (String bookName) {
+    public List<Books> getBooksByBookName(String bookName) {
         Session session = HibernateSessionGet.getSessionFactory().openSession();
         Transaction tx= session.beginTransaction();
         List<Books> results = session.createQuery("FROM Books WHERE bookName='" + bookName + "'").list();
