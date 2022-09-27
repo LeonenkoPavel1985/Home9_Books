@@ -66,7 +66,7 @@ public class ControllerBooks {
     public List<Books> getBooksByBookName (String bookName) {
         Session session = HibernateSessionGet.getSessionFactory().openSession();
         Transaction tx= session.beginTransaction();
-        List<Books> results = session.createQuery("FROM Catalog WHERE bookName='" + bookName + "'").list();
+        List<Books> results = session.createQuery("FROM Books WHERE bookName='" + bookName + "'").list();
         tx.commit();
         if (results.size() >0 )
             return results;
